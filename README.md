@@ -15,9 +15,11 @@ Support Modules:
 - DuffDevicesFinder: rename routines for zeroing/copying memory
 - PointerAnalyzer: improve pointer naming
 
-## Reference
+## References
 
 Blog: https://www.pnfsoftware.com/blog/analyzing-golang-executables/
+
+How to run JEB scripts: https://www.pnfsoftware.com/jeb/manual/dev/introducing-jeb-extensions/#executing-scripts
 
 ## Version
   
