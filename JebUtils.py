@@ -9,25 +9,26 @@ def readNullTerminatedString(memory, curAddress):
 
 def readString(memory, curAddress, maxLen):
   '''
-    Read string from memory, using the provided maximum length if non zero, or until next null-byte.
+    Read UTF-8 string from memory, using the provided maximum length if non zero, or until next null-byte.
   '''
   DEFAULT_MAX_LENGTH = 0x1000
 
   curChar = ''
-  result = ''
+  result = list()
   readLength = 0
   if maxLen == 0:
     maxLen = DEFAULT_MAX_LENGTH
 
   while curChar != 0x00 and readLength < maxLen:
     curChar = memory.readByte(curAddress) & 0xFF
-    result += chr(curChar)
+    result.append(chr(curChar))
     curAddress+=1
     readLength+=1
 
   if curChar == 0x00:
     result = result[:-1]
-  return result
+    
+  return ''.join(result).decode('utf-8')
 
 def searchMemoryFor4BConstant(memory, constant, startAddres, endAddress):
   '''
